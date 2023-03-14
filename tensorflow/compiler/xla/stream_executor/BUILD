@@ -212,10 +212,12 @@ cc_library(
     ],
 )
 
+# We need to remove make_default_target_header_only so that
+# we can build PyTorch/XLA. Otherwise, we won't have the
+# required objects linked at build time.
 tf_proto_library(
     name = "dnn_proto",
     srcs = ["dnn.proto"],
-    make_default_target_header_only = True,
     protodeps = ["//tensorflow/tsl/protobuf:dnn_proto"],
     exports = ["//tensorflow/tsl/protobuf:dnn_proto"],
 )

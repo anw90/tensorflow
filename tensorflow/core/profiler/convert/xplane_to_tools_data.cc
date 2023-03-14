@@ -252,8 +252,9 @@ StatusOr<std::string> ConvertMultiXSpacesToToolData(
     return ConvertMultiXSpacesToTfDataBottleneckAnalysis(session_snapshot);
   } else if (tool_name == "op_profile") {
     return ConvertMultiXSpacesToOpProfileViewer(session_snapshot);
-  } else if (tool_name == "memory_viewer" || tool_name == "graph_viewer") {
-    return ConvertHloProtoToToolData(session_snapshot, tool_name, options);
+    // this function is not being used by xla
+    // } else if (tool_name == "memory_viewer" || tool_name == "graph_viewer") {
+    //   return ConvertHloProtoToToolData(session_snapshot, tool_name, options);
   } else if (tool_name == "tool_names") {
     return GetAvailableToolNames(session_snapshot);
   } else if (tool_name == "_xplane.pb") {  // internal test only.

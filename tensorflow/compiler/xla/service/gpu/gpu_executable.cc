@@ -490,8 +490,7 @@ StatusOr<ExecutionOutput> GpuExecutable::ExecuteAsyncOnStreamImpl(
       "GpuExecutable::ExecuteAsyncOnStreamImpl(", module_name_, ")"));
   se::DeviceMemoryAllocator* const memory_allocator = run_options->allocator();
   // Force synchronous execution if the allocator requires it.
-  const bool block_host_until_done =
-      !memory_allocator->AllowsAsynchronousDeallocation();
+  const bool block_host_until_done = true;
 
   se::StreamExecutor* executor = run_options->stream()->parent();
 

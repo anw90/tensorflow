@@ -836,7 +836,8 @@ Status GpuCompiler::OptimizeHloPostLayoutAssignment(
     pipeline.AddPass<GemmBroadcastFoldingRewriter>();
 
     if (debug_options.xla_gpu_normalize_layouts()) {
-      pipeline.AddPass<LayoutNormalization>(&NormalizeLayoutForGpuCustomCalls);
+      pipeline.AddPass<LayoutNormalization>(
+          &NormalizeLayoutForCustomCallConvolution);
       pipeline.AddPass<HloPassFix<AlgebraicSimplifier>>(options);
     }
     pipeline.AddPass<BroadcastCanonicalizer>();
